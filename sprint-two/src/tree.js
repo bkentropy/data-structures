@@ -3,24 +3,36 @@ var Tree = function(value){
   newTree.value = value;
 
   // your code here
-  newTree.children = null;  // fix me
+  newTree.children = [];  // fix me
+
+  newTree.addChild = treeMethods.addChild;
+  newTree.contains = treeMethods.contains;
 
   return newTree;
 };
 
 
-
-
-
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
-
+  var counter = 0;
+  this.children[counter] = { "value": value};
+  counter++;
 };
 
 treeMethods.contains = function(target){
+  var found = false;
+  _.each(this.children, function(child) {
+    if ( child.value === target ) {
+      found = true;
+    }
+  });
+
+  return found;
 
 };
+
+
 
 
 /*
