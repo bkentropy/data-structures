@@ -23,15 +23,21 @@ treeMethods.addChild = function(value){
 };
 
 treeMethods.contains = function(target){
+  
   var found = false;
-
+  //define a function
   _.each(this.children, function(child) {
     if ( child.value === target ) {
       found = true;
     }
-    // if( child.children ){
-    //    child.contains(target);
-    //  }
+
+    if( child.children ){
+      // _.each(child.children, function(child){
+        if ( child.contains(target) ) {
+          found = true; // Why do we need this? why is not line 31 not sufficient?
+        };
+      // })
+     }
   }); 
 
   return found;

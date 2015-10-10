@@ -11,6 +11,9 @@ var LinkedList = function(){
     //we add the called value to the current tail of next property
     //assign give value to list.tail.
 
+    // while current.next then you are not at the last one
+    // current = current.next
+
     if( list.head === null ){
       list.head = Node(value);
       list.tail = Node(value);
