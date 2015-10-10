@@ -1,22 +1,30 @@
 var HashTable = function(){
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
+  this._duplicate = false;
 };
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
+  if(this._storage[i]) {
+    i += 1;
+    this._duplicate = true;
+  }
+  this._storage[i] = v;
 };
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-
+  if(this._duplicate){
+    return this._storage[i+1];
+  }
+  return this._storage[i];
 };
 
 HashTable.prototype.remove = function(k){
-
+  var i = getIndexBelowMaxForKey(k, this._limit);
+  this._storage[i] = null;
 };
-
-
 
 /*
  * Complexity: What is the time complexity of the above functions?
