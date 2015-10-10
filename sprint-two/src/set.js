@@ -14,7 +14,7 @@ setPrototype.contains = function(item){
   var result = false;
 
   _.each(this, function(element) {
-    console.log("element[item] : "+element[item]);
+    // console.log("element[item] : "+element[item]);
     if ( element[item] ) {
       result = true;
     }

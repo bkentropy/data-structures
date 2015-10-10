@@ -2,36 +2,16 @@ var LinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
-  var headPos = 0;
-  var tailPos = 0;
 
   list.addToTail = function(value){
-    //takes a value and adds it to the end of the list
-    
-    //we add the called value to the current tail of next property
-    //assign give value to list.tail.
 
-    // while current.next then you are not at the last one
-    // current = current.next
-
-    if( list.head === null ){
-      list.head = Node(value);
+    if( list.head && list.tail ){
+      list.tail.next = Node(value);
       list.tail = Node(value);
-      // tailPos++;
-    } else {
-
-      //save the current list.tail to a var
-      // list.tail = Node(value);
-      //something = Node(value, list.tail);
-      // list.head.next = list.tail;
+    } else if ( !(list.head) ){
       list.tail = Node(value);
-
-      // tailPos++;  
+      list.head = list.tail;
     }
-    // if we add a new tail
-    // old tail -> list.middle
-    // every new value -> most current list.tail
-
   };
 
   list.removeHead = function(){
